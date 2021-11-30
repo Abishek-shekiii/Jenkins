@@ -1,7 +1,10 @@
 package com.abishek;
 
-import java.sql.Date;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
@@ -9,9 +12,14 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
+@Entity
+@Table(name="users")
 public class User {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
 	@Size(min = 3, max = 50)
     private String name;
      
@@ -32,8 +40,8 @@ public class User {
     @AssertTrue
     private boolean married;
      
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private Date birthday;
+//    @DateTimeFormat(pattern = "yyyy-mm-dd")
+//    private Date birthday;
      
     @NotBlank
     private String profession;
@@ -90,13 +98,13 @@ public class User {
 		this.married = married;
 	}
 
-	public Date getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
+//	public Date getBirthday() {
+//		return birthday;
+//	}
+//
+//	public void setBirthday(Date birthday) {
+//		this.birthday = birthday;
+//	}
 
 	public String getProfession() {
 		return profession;
@@ -113,11 +121,35 @@ public class User {
 	public void setIncome(long income) {
 		this.income = income;
 	}
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public User() {}
+	
+	public User(@Size(min = 3, max = 50) String name,
+			@NotBlank @Email(message = "Please enter a valid e-mail address") String email,
+			@NotBlank @Size(min = 8, max = 15) String password, @NotBlank String gender, @Size(max = 100) String note,
+			@AssertTrue boolean married, @NotBlank String profession, @Min(20000) @Max(200000) long income) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.gender = gender;
+		this.note = note;
+		this.married = married;
+		this.profession = profession;
+		this.income = income;
+	}
 
 	@Override
 	public String toString() {
 		return "User [name=" + name + ", email=" + email + ", password=" + password + ", gender=" + gender + ", note="
-				+ note + ", married=" + married + ", birthday=" + birthday + ", profession=" + profession + ", income="
+				+ note + ", married=" + married + ", profession=" + profession + ", income="
 				+ income + "]";
 	}
     

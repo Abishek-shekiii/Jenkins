@@ -59,11 +59,11 @@
 			</div>
 			
 
-			<div>
+			<%-- <div>
 			<form:label path="birthday">Birthday:</form:label>
 			<form:input path="birthday" type="date"/>
 			<form:errors path="birthday" cssClass="error" />
-			</div>
+			</div> --%>
 			
 			<div>
 			<form:label path="gender">Gender:</form:label>
