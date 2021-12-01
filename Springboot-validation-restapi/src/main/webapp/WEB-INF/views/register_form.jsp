@@ -41,6 +41,12 @@
 		<h2>User Registration</h2>
 		<form:form action="register" method="post" modelAttribute="user">
 			<div>
+			<form:label path="userId">User Id:</form:label>
+			<form:input path="userId" />
+			<form:errors path="userId" cssClass="error" />
+			</div>
+			
+			<div>
 			<form:label path="name">Full name:</form:label>
 			<form:input path="name" />
 			<form:errors path="name" cssClass="error" />
@@ -59,11 +65,11 @@
 			</div>
 			
 
-			<%-- <div>
+			<div>
 			<form:label path="birthday">Birthday:</form:label>
 			<form:input path="birthday" type="date"/>
 			<form:errors path="birthday" cssClass="error" />
-			</div> --%>
+			</div> 
 			
 			<div>
 			<form:label path="gender">Gender:</form:label>
