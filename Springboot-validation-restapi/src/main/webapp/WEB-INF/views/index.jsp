@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h1>Spring Boot JSP Form Validation Example</h1>
-	<a href="register">Click here</a>
+	<a href="register">Register here</a>
 </body>
 </html>
